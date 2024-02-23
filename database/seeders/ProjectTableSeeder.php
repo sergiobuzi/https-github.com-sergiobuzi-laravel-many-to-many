@@ -17,7 +17,7 @@ class ProjectTableSeeder extends Seeder
      */
     public function run()
     {
-        Project :: factory() -> count(100) -> make() -> each(function($project){
+        Project :: factory() -> count(10) -> make() -> each(function($project){
 
             $type = Type :: inRandomOrder() -> first();
             $project -> type() -> associate($type);

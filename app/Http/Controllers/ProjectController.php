@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\project;
 use App\Models\Technology;
 use App\Models\Type;
+use Illuminate\Support\Facades\Storage;
 use SebastianBergmann\CodeCoverage\Report\Xml\Project as XmlProject;
 
 class ProjectController extends Controller
@@ -30,10 +31,18 @@ class ProjectController extends Controller
         $data = $request -> all();
 
         $type = Type :: find($data['type_id']);
+
+        $image = $data['image'];
+        $image_path = Storage :: disk('public')
+            ->put('images', $image);
         
+
+            
         $projects = new Project();
+
         $projects -> name = $data['name'];
         $projects -> description = $data['description'];
+        $projects -> image = $image_path;
 
         $projects -> type() -> associate($type);
         

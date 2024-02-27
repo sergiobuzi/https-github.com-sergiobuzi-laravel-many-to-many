@@ -3,10 +3,19 @@
     <title>Home</title>
 @endsection
 @section('content')
+
+
+
     <h1>crea un nuovo progetto</h1>
-    <form method="POST">
+
+
+
+    <form method="POST" enctype="multipart/form-data">
 
         @csrf
+        @method('POST')
+
+
         <label for="name">Name</label>
         <input type="text" name="name" id="name">
         <br>
@@ -20,6 +29,8 @@
             @endforeach
         </select>
         <br>
+
+        {{-- campo per la selezione della teconologia nella create --}}
         @foreach ($technologies as $technology)
                 <div>
                     <input 
@@ -34,7 +45,17 @@
                     </label>
                 </div>
         @endforeach
+
+
+        {{-- campo per l' aggiunta di un'immagine --}}
+        <label for="image">Seleziona un'immagine</label>
+        <input type="file" name="image" id="image">
+        <br>
+
+
         <input type="submit" value="CREATE">
+
+
     </form>
 
 @endsection

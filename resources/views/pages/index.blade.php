@@ -4,15 +4,24 @@
 @endsection
 @section('content')
     <h1>cose</h1>
+    <a href=" {{route('project.create')}}">CREA UN NUOVO PROGETTO</a>
+    <br><br>
     <ul>
         @foreach ($projects as $project)
 
             <li>
-                <div>progetto: {{$project -> name}}</div>
-                <div>tipo: {{$project -> type -> category}}</div>
-                <br>
+                <div><b>progetto:</b> {{$project -> name}}</div>
+                <div><b>tipo:</b> {{$project -> type -> category}}</div>   
+                
+                @foreach ($project ->technologies as $technology)
+                    <div><b>tecnologia:</b> {{$technology -> name}}</div>
+                @endforeach 
+                <br>      
             </li>
             
         @endforeach
+
+
+        
     </ul>
 @endsection

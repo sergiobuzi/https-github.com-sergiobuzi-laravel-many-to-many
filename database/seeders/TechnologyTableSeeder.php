@@ -21,6 +21,7 @@ class TechnologyTableSeeder extends Seeder
         Technology :: factory() 
         -> count(10) 
         -> create()
+         //la each ci prende un elemento random di technology e lo associa 
         -> each(function($technology){
 
             $projects = Project :: inRandomOrder() -> limit(3) -> get();

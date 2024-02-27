@@ -17,6 +17,7 @@ class ProjectTableSeeder extends Seeder
      */
     public function run()
     {
+        //la each ci prende un elemento random di type e lo associa 
         Project :: factory() -> count(10) -> make() -> each(function($project){
 
             $type = Type :: inRandomOrder() -> first();

@@ -5,7 +5,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TypeController;
 
 
-Route::get('/projects', [ProjectController :: class, 'index'])
+Route::get('/', [ProjectController :: class, 'index'])
     ->name('project.index');
 
 Route :: get('/projects/create', [ProjectController :: class, 'create'])

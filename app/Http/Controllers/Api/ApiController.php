@@ -10,15 +10,6 @@ use App\Models\Technology;
 
 class ApiController extends Controller
 {
-    public function getTest() 
-    {
-
-        return response()->json([
-            'status' => 'success',
-            'message' => 'messaggio'
-        ]);
-
-    }
 
     public function getTechnologies()
     {
@@ -27,6 +18,23 @@ class ApiController extends Controller
         return response()->json([
             'status' => 'success',
             'technologies' => $technologies
+        ]);
+    }
+
+    public function CreateTechnologies(Request $request) {
+
+        $data = $request -> all();
+
+        $technology = new Technology;
+
+        $technology -> name = $data['name'];
+        $technology -> version = $data['version'];
+
+        $technology -> save();
+
+        return response()->json([
+            'status' => 'success',
+            'technology' => $technology,
         ]);
     }
 }

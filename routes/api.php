@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route :: group(['prefix' => '/v1'], function() {
 
 
-    Route ::get('technologies', [ApiController :: class, 'getTechnologies'])
-        ->name('api.technologies');
-        
+    Route ::get('technologies', [ApiController :: class, 'getTechnologies']);
+
+    Route :: post('technologies', [ApiController :: class, 'CreateTechnologies']);
 });
